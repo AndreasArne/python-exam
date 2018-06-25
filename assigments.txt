@@ -1,0 +1,20 @@
+1. Validera email adresser. Fyll i funktionen "validate_email", den ska validera en email adress. Funktionen ska returnera True om adressen är giltig, annars False. Följande regler gäller:
+    1. innehåller ett "@".
+    2. efter @, minst en punkt, "." och karaktärer framför punkten.
+    3. efter den sista punkten 2 eller 3 karaktärer.
+    4. innehåller endast karaktärerna a-z och 0-9 samt ".", "_", "-", "@".
+    5. endast små bokstäver.
+    6. det ska finnas karaktärer framför "@".
+
+2. Hitta medianen. Fyll i funktionen "list_median", den ska hitta medianen över värdena som finns i listan. Medianen är det värde för en ordnad lista som delar listan i två lika stora delar. Om listan innehåller ett jämnt antal element är medianen medelvärdet av de två tal som ligger i mitten av listan, sorterad. Du kan anta att värdena som skickas som argument endast innehåller heltal. Din funktion ska returnera medianen av listan och retur värdet ska max ha en decimal.
+
+3. Hitta dubbletter. Fyll i funktionen "find_duplicates", den ska ta en lista som argument och listan innehåller strängar. Hitta alla dubbletter och returnera en lista med värdet som är en dubblett. I den returnerade listan ska varje dubblett endast vara med en gång. Din lösning ska vara case-insensitive, dvs. a == A. Listan som returneras ska vara sorterad i bokstavsordning.
+
+4. Analysera text. Den här uppgiften går ut på att du ska analysera en text fil på 3 olika sätt. "analyze_text" ska innehålla en while-loop som tar emot input från användaren. Loopen ska avslutas om användaren skriver "q" eller "quit", när programmet avslutas returneras True.  
+De tre olika sätten texten ska analyseras på är:
+    1. Om användaren skriver "v" som input ska antalet vokaler skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+    2. Om användaren skriver "p" som input ska antalet punkter (".") skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+    3. Om användaren skriver "u" som input ska antalet stora bokstäver skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+Funktionen analyze_text ska enbart innehålla while-loopen som tar inputs och if-satsen för valen. Övriga funktioner ska ligga i en ny modul som du även ska skapa. Modulen ska heta "analyze_functions.py", det ska finns minst en funktion för varje menyval, utom valet "q". 
+
+while, read, moduler, funktioner i funktioner, input

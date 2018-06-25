@@ -17,13 +17,14 @@ class TestFunc(unittest.TestCase):
     The different asserts https://docs.python.org/3.6/library/unittest.html#test-cases
     """
     
-    def test_a_area(self):
+
+    def test_a_module(self):
+        self.assertIsNotNone(util.find_spec("exam"))
+    
+    def test_b_area(self):
         self.assertTrue(hasattr(exam, "area"))
         self.assertEqual(exam.area(2), 4*math.pi)
 
-    def test_b_module(self):
-        self.assertIsNotNone(util.find_spec("exam"))
-    
     def test_c_std(self):
         inp = ["test"]
         with patch('builtins.input', side_effect=inp):
