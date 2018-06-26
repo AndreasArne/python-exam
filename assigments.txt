@@ -1,4 +1,17 @@
-1. Validera email adresser. Fyll i funktionen "validate_email", den ska validera en email adress. Funktionen ska returnera True om adressen är giltig, annars False. Följande regler gäller:
+Generellt: För alla uppgifter du löser, uppdatera docstring (kommentaren längst upp i funktionen) för den funktionen till en relevant kommentar om vad funktionen gör.
+
+
+
+1. Analysera text. Den här uppgiften går ut på att du ska analysera textfilen "manifesto.txt" på 3 olika sätt. "analyze_text" ska innehålla en while-loop som tar emot input från användaren. Loopen ska avslutas om användaren skriver "q" eller "quit", när programmet avslutas returneras True.  
+De tre olika sätten texten ska analyseras på är:
+    1. Om användaren skriver "v" som input ska antalet vokaler skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+    2. Om användaren skriver "p" som input ska antalet punkter (".") skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+    3. Om användaren skriver "u" som input ska antalet stora bokstäver skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
+Funktionen analyze_text ska enbart innehålla while-loopen som tar inputs och if-satsen för valen. Övriga funktioner ska ligga i en ny modul som du även ska skapa. Modulen ska heta "analyze_functions.py", det ska finns minst en funktion för varje menyval, utom valet "q". Om användaren skriver ett ej giltigt argument ska "Not an option!" skrivas ut.
+
+
+
+2. Validera email adresser. Fyll i funktionen "validate_email", den ska validera en email adress. Funktionen ska returnera True om adressen är giltig, annars False. Följande regler gäller:
     1. innehåller ett "@".
     2. efter @, minst en punkt, "." och karaktärer framför punkten.
     3. efter den sista punkten 2 eller 3 karaktärer.
@@ -6,15 +19,23 @@
     5. endast små bokstäver.
     6. det ska finnas karaktärer framför "@".
 
-2. Hitta medianen. Fyll i funktionen "list_median", den ska hitta medianen över värdena som finns i listan. Medianen är det värde för en ordnad lista som delar listan i två lika stora delar. Om listan innehåller ett jämnt antal element är medianen medelvärdet av de två tal som ligger i mitten av listan, sorterad. Du kan anta att värdena som skickas som argument endast innehåller heltal. Din funktion ska returnera medianen av listan och retur värdet ska max ha en decimal.
 
-3. Hitta dubbletter. Fyll i funktionen "find_duplicates", den ska ta en lista som argument och listan innehåller strängar. Hitta alla dubbletter och returnera en lista med värdet som är en dubblett. I den returnerade listan ska varje dubblett endast vara med en gång. Din lösning ska vara case-insensitive, dvs. a == A. Listan som returneras ska vara sorterad i bokstavsordning.
 
-4. Analysera text. Den här uppgiften går ut på att du ska analysera en text fil på 3 olika sätt. "analyze_text" ska innehålla en while-loop som tar emot input från användaren. Loopen ska avslutas om användaren skriver "q" eller "quit", när programmet avslutas returneras True.  
-De tre olika sätten texten ska analyseras på är:
-    1. Om användaren skriver "v" som input ska antalet vokaler skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
-    2. Om användaren skriver "p" som input ska antalet punkter (".") skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
-    3. Om användaren skriver "u" som input ska antalet stora bokstäver skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
-Funktionen analyze_text ska enbart innehålla while-loopen som tar inputs och if-satsen för valen. Övriga funktioner ska ligga i en ny modul som du även ska skapa. Modulen ska heta "analyze_functions.py", det ska finns minst en funktion för varje menyval, utom valet "q". Om användaren skriver ett ej giltigt argument ska "Not an option!" skrivas ut.
+3. Hitta medianen. Fyll i funktionen "list_median", den ska hitta medianen över värdena som finns i listan. Medianen är det värde för en ordnad lista som delar listan i två lika stora delar. Om listan innehåller ett jämnt antal element är medianen medelvärdet av de två tal som ligger i mitten av listan, sorterad. Du kan anta att värdena som skickas som argument endast innehåller heltal. Din funktion ska returnera medianen av listan och retur värdet ska max ha en decimal.
 
-while, read, moduler, funktioner i funktioner, input
+
+
+4. Hitta dubbletter. Fyll i funktionen "find_duplicates", den ska ta en lista som argument och listan innehåller strängar. Hitta alla dubbletter och returnera en lista med värdet som är en dubblett. I den returnerade listan ska varje dubblett endast vara med en gång. Din lösning ska vara case-insensitive, dvs. a == A. Listan som returneras ska vara sorterad i bokstavsordning.
+
+
+
+5. Kolla datatyper. Fyll i funktionen "types", den ska ta emot en lista som argument. Den listan kan innehålla ett godtyckligt antal element av tre olika datatyper. De möjliga data typerna är heltal, strängar och listor. Funktionen ska returnera en sträng som byggs upp av de olika elementen som finns i argumentet. Beroende på datatypen gör följande:
+    1. Heltal, lägg till strängen "The square of i is i^2.", där "i" är heltalet.
+    2. Sträng, lägg till strängen "The secret word is s.", där "s" är strängen.
+    3. Lista, lägg till strängen "The list contains x, y, z.", där "xyz" är värden från listan. Listan kan innehålla en odefinierad mängd värden. Du kan anta att elementen är av datatypen sträng.
+    4. Annan typ, om värdet är av annan typ än de ovanför , gör inget.
+Den returnerande strängen ska innehålla mellanrum mellan de olika strängar som har byggts ihop. Om argumentet är en tom lista ska funktionen returnera en tom sträng. Exempel på argument och resultat är följande, [1, "hej", ["3","4","5"]] --> "The square of 1 is 1. The secret word is hej. The list contains 3, 4, 5.".
+
+
+
+6. Se till att alla filer validera med "dbwebb validate exam". Publicera dina filer med kommandot "dbwebb publish exam", det kommer även rätta inlämningen. 

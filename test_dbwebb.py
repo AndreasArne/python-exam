@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-# tester
-import exam
+"""
+Contains testcases for the individual examination.
+"""
 import unittest
-import math
-from importlib import util
 from unittest.mock import patch
+from importlib import util
 from io import StringIO
+import exam
 
 class TestFunc(unittest.TestCase):
     """
@@ -18,32 +19,70 @@ class TestFunc(unittest.TestCase):
     The different asserts https://docs.python.org/3.6/library/unittest.html#test-cases
     """
     
-
+    
     def test_a_module(self):
+        """
+        Test that module and functions exist
+        """
         self.assertIsNotNone(util.find_spec("exam"))
         self.assertTrue(hasattr(exam, "validate_email"))
         self.assertTrue(hasattr(exam, "list_median"))
         self.assertTrue(hasattr(exam, "find_duplicates"))
-    
-    def test_b_validate_email(self):
-        match = ["abc@gmail.com", ".@gmail.com", "ab_c@gmail.com", "ab-c@gmail.com", "aa.b-c@gmail.com", "aa.b-c@gma.il.com", "a23c@gmail.com", "abc@gmail.co3"]
-        not_match = ["abcgmail.com", "@gmail.com", "abc@asf..com", "abc@.com", "ab c@gmail.com", "ab:c@gmail.com", "ab!c@gmail.com", "aåc@gmail.com", "abcgmail.c", "ab-c@gmailcom", "aa.b-c@gmail.coms", "Awac@gmail.com","aa.b-c@gmail.coms", "aa.b-c@gma@il.com"]
+        self.assertTrue(hasattr(exam, "analyze_text"))
+        self.assertTrue(hasattr(exam, "types"))
 
+    def test_b_analyze_text(self):
+        """
+        Test assignment 1
+        """
+        self.assertNotEqual(exam.analyze_text.__doc__.strip(), "Assignment 1")
+        self.assertIsNotNone(util.find_spec("analyze_functions"))
+        inp = ["v", "p", "u", "Gobble gobble", "q"]
+        with patch('builtins.input', side_effect=inp):
+            with patch('sys.stdout', new=StringIO()) as fake_out:
+                code = exam.analyze_text()
+                str_data = fake_out.getvalue().strip("\n")
+                list_data = str_data.split("\n")
+                self.assertEqual(list_data, ["270", "18", "20", "Not an option!"])
+                self.assertTrue(code)
+
+    def test_c_validate_email(self):
+        """
+        Test assignment 2
+        """
+        self.assertNotEqual(exam.validate_email.__doc__.strip(), "Assignment 2")
+
+        match = ["abc@gmail.com", ".@gmail.com", "ab_c@gmail.com", "ab-c@gmail.com",
+                 "aa.b-c@gmail.com", "aa.b-c@gma.il.com", "a23c@gmail.com", "abc@gmail.co3"]
+        not_match = ["abcgmail.com", "@gmail.com", "abc@asf..com", "abc@.com", 
+                     "ab c@gmail.com", 
+                     "ab:c@gmail.com", "ab!c@gmail.com", "aåc@gmail.com",
+                     "abcgmail.c", "ab-c@gmailcom", "aa.b-c@gmail.coms",
+                     "Awac@gmail.com", "aa.b-c@gmail.coms", "aa.b-c@gma@il.com"]
+        
         for case in match:
             self.assertTrue(exam.validate_email(case))
-
+            
         for case in not_match:
             self.assertFalse(exam.validate_email(case))
 
-    def test_c_list_median(self):
-        simple = [0,1,2,4,5]
+    def test_d_list_median(self):
+        """
+        Test assignment 3
+        """
+        self.assertNotEqual(exam.list_median.__doc__.strip(), "Assignment 3")
+        simple = [0, 1, 2, 4, 5]
         self.assertEqual(exam.list_median(simple), 2)
-        unsorted = [5,1,0,2,4]
+        unsorted = [5, 1, 0, 2, 4]
         self.assertEqual(exam.list_median(unsorted), 2)
-        even = [2,1,4,5,3,2]
+        even = [2, 1, 4, 5, 3, 2]
         self.assertEqual(exam.list_median(even), 2.5)
 
-    def test_c_find_duplicates(self):
+    def test_e_find_duplicates(self):
+        """
+        Test assignment 4
+        """
+        self.assertNotEqual(exam.find_duplicates.__doc__.strip(), "Assignment 4")
         empty = []
         self.assertEqual(exam.find_duplicates(empty), [])
         no_dups = ["hej", "hopp"]
@@ -55,17 +94,24 @@ class TestFunc(unittest.TestCase):
         upper = ["hej", "Hej"]
         self.assertEqual(exam.find_duplicates(upper), ["hej"])
 
-    def test_d_analyze_text(self):
-         self.assertIsNotNone(util.find_spec("analyze_functions"))
-         inp = ["v", "p", "u", "q"]
-         with patch('builtins.input', side_effect=inp):
-             with patch('sys.stdout', new=StringIO()) as fake_out:
-                 code = exam.analyze_text()
-                 str_data = fake_out.getvalue().strip("\n")
-                 list_data = str_data.split("\n")
-                 self.assertEqual(list_data, ["4", "5", "6"])
-                 self.assertTrue(code)
-
+    def test_f_types(self):
+        """
+        Test assignment 5
+        """
+        self.assertNotEqual(exam.types.__doc__.strip(), "Assignment 5")
+        base = [1, "hej", ["3", "4", "5"]]
+        self.assertEqual(exam.types(base), "The square of 1 is 1. The secret word is hej. The list contains 3, 4, 5.")
+        single = [12]
+        self.assertEqual(exam.types(single), "The square of 12 is 144.")
+        sqr = [2, 5, 8]
+        self.assertEqual(exam.types(sqr), "The square of 2 is 4. The square of 5 is 25. The square of 8 is 64.")
+        sqr_dict = [2, {"hej": "dig"}]
+        self.assertEqual(exam.types(sqr_dict), "The square of 2 is 4.")
+        mult_list = [1, "hej", ["3", "4", "5", "hej", "haha"]]
+        self.assertEqual(exam.types(mult_list),
+                         "The square of 1 is 1. The secret word is hej. The list contains 3, 4, 5, hej, haha.")
+        empty = []
+        self.assertEqual(exam.types(empty), "")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
