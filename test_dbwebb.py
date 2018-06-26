@@ -10,12 +10,8 @@ import exam
 
 class TestFunc(unittest.TestCase):
     """
-    Run the test to see when you are done improving the code.
-    When you first run the test don't be discourage by
-    the long execution times.
-    Small improvements to the code can have big impact.
-    Once b,c and d are OK uncomment e and f and run them to check.
-    
+    Each assignment has 1 testcase with multiple asserts.
+
     The different asserts https://docs.python.org/3.6/library/unittest.html#test-cases
     """
     
