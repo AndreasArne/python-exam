@@ -15,6 +15,6 @@ De tre olika sätten texten ska analyseras på är:
     1. Om användaren skriver "v" som input ska antalet vokaler skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
     2. Om användaren skriver "p" som input ska antalet punkter (".") skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
     3. Om användaren skriver "u" som input ska antalet stora bokstäver skrivas ut med print(). Skriv enbart ut siffran, ingen extra text.
-Funktionen analyze_text ska enbart innehålla while-loopen som tar inputs och if-satsen för valen. Övriga funktioner ska ligga i en ny modul som du även ska skapa. Modulen ska heta "analyze_functions.py", det ska finns minst en funktion för varje menyval, utom valet "q". 
+Funktionen analyze_text ska enbart innehålla while-loopen som tar inputs och if-satsen för valen. Övriga funktioner ska ligga i en ny modul som du även ska skapa. Modulen ska heta "analyze_functions.py", det ska finns minst en funktion för varje menyval, utom valet "q". Om användaren skriver ett ej giltigt argument ska "Not an option!" skrivas ut.
 
 while, read, moduler, funktioner i funktioner, input

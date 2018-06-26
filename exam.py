@@ -40,9 +40,12 @@ def analyze_text():
         if inp == "q":
             break
         elif inp == "v":
-            print(4)
+            hej = 4
+            print(hej)
         elif inp == "p":
             print(5)
         elif inp == "u":
             print(6)
+        else:
+            print("Not an option!")
     return True
