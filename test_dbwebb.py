@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 from importlib import util
 from io import StringIO
+from modulefinder import ModuleFinder
 import exam
 
 class TestFunc(unittest.TestCase):
@@ -14,8 +15,8 @@ class TestFunc(unittest.TestCase):
 
     The different asserts https://docs.python.org/3.6/library/unittest.html#test-cases
     """
-    
-    
+
+
     def test_a_module(self):
         """
         Test that module and functions exist
@@ -42,31 +43,11 @@ class TestFunc(unittest.TestCase):
                 self.assertEqual(list_data, ["270", "18", "20", "Not an option!"])
                 self.assertTrue(code)
 
-    def test_c_validate_email(self):
+    def test_c_list_median(self):
         """
         Test assignment 2
         """
-        self.assertNotEqual(exam.validate_email.__doc__.strip(), "Assignment 2")
-
-        match = ["abc@gmail.com", ".@gmail.com", "ab_c@gmail.com", "ab-c@gmail.com",
-                 "aa.b-c@gmail.com", "aa.b-c@gma.il.com", "a23c@gmail.com", "abc@gmail.co3"]
-        not_match = ["abcgmail.com", "@gmail.com", "abc@asf..com", "abc@.com", 
-                     "ab c@gmail.com", 
-                     "ab:c@gmail.com", "ab!c@gmail.com", "aåc@gmail.com",
-                     "abcgmail.c", "ab-c@gmailcom", "aa.b-c@gmail.coms",
-                     "Awac@gmail.com", "aa.b-c@gmail.coms", "aa.b-c@gma@il.com"]
-        
-        for case in match:
-            self.assertTrue(exam.validate_email(case))
-            
-        for case in not_match:
-            self.assertFalse(exam.validate_email(case))
-
-    def test_d_list_median(self):
-        """
-        Test assignment 3
-        """
-        self.assertNotEqual(exam.list_median.__doc__.strip(), "Assignment 3")
+        self.assertNotEqual(exam.list_median.__doc__.strip(), "Assignment 2")
         simple = [0, 1, 2, 4, 5]
         self.assertEqual(exam.list_median(simple), 2)
         unsorted = [5, 1, 0, 2, 4]
@@ -74,11 +55,16 @@ class TestFunc(unittest.TestCase):
         even = [2, 1, 4, 5, 3, 2]
         self.assertEqual(exam.list_median(even), 2.5)
 
-    def test_e_find_duplicates(self):
+        # Check that module is not used for solving Assignment
+        finder = ModuleFinder()
+        finder.run_script(exam.__name__ + ".py")
+        self.assertNotIn("statistics", finder.modules.keys())
+
+    def test_d_find_duplicates(self):
         """
-        Test assignment 4
+        Test assignment 3
         """
-        self.assertNotEqual(exam.find_duplicates.__doc__.strip(), "Assignment 4")
+        self.assertNotEqual(exam.find_duplicates.__doc__.strip(), "Assignment 3")
         empty = []
         self.assertEqual(exam.find_duplicates(empty), [])
         no_dups = ["hej", "hopp"]
@@ -90,11 +76,11 @@ class TestFunc(unittest.TestCase):
         upper = ["hej", "Hej"]
         self.assertEqual(exam.find_duplicates(upper), ["hej"])
 
-    def test_f_types(self):
+    def test_e_types(self):
         """
-        Test assignment 5
+        Test assignment 4
         """
-        self.assertNotEqual(exam.types.__doc__.strip(), "Assignment 5")
+        self.assertNotEqual(exam.types.__doc__.strip(), "Assignment 4")
         base = [1, "hej", ["3", "4", "5"]]
         self.assertEqual(exam.types(base), "The square of 1 is 1. The secret word is hej. The list contains 3, 4, 5.")
         single = [12]
@@ -108,6 +94,26 @@ class TestFunc(unittest.TestCase):
                          "The square of 1 is 1. The secret word is hej. The list contains 3, 4, 5, hej, haha.")
         empty = []
         self.assertEqual(exam.types(empty), "")
+
+    def test_f_validate_email(self):
+        """
+        Test assignment 5
+        """
+        self.assertNotEqual(exam.validate_email.__doc__.strip(), "Assignment 5")
+
+        match = ["abc@dbwebb.com", ".@dbwebb.com", "ab_c@dbwebb.com", "ab-c@dbwebb.com",
+                 "aa.b-c@dbwebb.com", "aa.b-c@dbw.ebb.com", "a23c@dbwebb.com", "abc@dbwebb.co3", "abc@dbwebb.se"]
+        not_match = ["abcdbwebb.com", "@dbwebb.com", "abc@asf..com", "abc@.com", 
+                     "ab c@dbwebb.com", 
+                     "ab:c@dbwebb.com", "ab!c@dbwebb.com", "aåc@dbwebb.com",
+                     "abcdbwebb.c", "ab-c@dbwebbcom", "aa.b-c@dbwebb.coms",
+                     "Awac@dbwebb.com", "aa.b-c@dbwebb.coms", "aa.b-c@db@webb.com"]
+        
+        for case in match:
+            self.assertTrue(exam.validate_email(case))
+            
+        for case in not_match:
+            self.assertFalse(exam.validate_email(case))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
